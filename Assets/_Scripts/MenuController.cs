@@ -8,6 +8,11 @@ public class MenuController : MonoBehaviour
     [SerializeField] private GameObject _skinsPanel;
     [SerializeField] private GameObject _settingsPanel;
 
+    private void Start()
+    {
+        Screen.orientation = ScreenOrientation.Portrait;
+    }
+
     public void PlayButton()
     {
         SceneManager.LoadScene("GameplayScene");
