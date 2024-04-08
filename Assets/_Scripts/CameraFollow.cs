@@ -17,7 +17,7 @@ public class CameraFollow : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (_plane.transform.position.x > _planePositionX)
+        if (_plane.transform.position.x > _planePositionX && _plane.GetComponent<PlayerController>().enabled != true)
         {
             Vector3 newPos = Vector3.Lerp(transform.position, _plane.position + _offset, 1f);
             transform.position = new Vector3(newPos.x, 0, newPos.z);
