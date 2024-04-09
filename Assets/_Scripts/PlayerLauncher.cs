@@ -6,7 +6,7 @@ public class PlayerLauncher : MonoBehaviour
 {
     [SerializeField] private GameObject _circles;
     private float _pitch;
-    private float _force = 10.0f;
+    private float _force = 20.0f;
 
     private void Start()
     {
