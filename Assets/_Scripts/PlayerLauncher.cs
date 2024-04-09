@@ -9,7 +9,7 @@ public class PlayerLauncher : MonoBehaviour
     [SerializeField] private GameObject _pauseButton;
 
     private float _pitch;
-    private float _force = 20.0f;
+    private float _force = 27.0f;
 
     private void Start()
     {
