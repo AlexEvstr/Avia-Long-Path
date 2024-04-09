@@ -6,6 +6,7 @@ public class PlayerLauncher : MonoBehaviour
 {
     [SerializeField] private GameObject _circles;
     private float _pitch;
+    private float _force = 10.0f;
 
     private void Start()
     {
@@ -24,5 +25,12 @@ public class PlayerLauncher : MonoBehaviour
         //float angle = Mathf.Asin(pitch) * Mathf.Rad2Deg;
 
         _circles.transform.eulerAngles = new Vector3(0, 0, _pitch);
+    }
+
+    public void LaunchPlane()
+    {
+        gameObject.GetComponent<Rigidbody2D>().AddRelativeForce(_circles.transform.right * _force, ForceMode2D.Impulse);
+        _circles.SetActive(false);
+        gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
     }
 }
