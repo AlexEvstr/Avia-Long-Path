@@ -25,7 +25,7 @@ public class CameraFollow : MonoBehaviour
     {
         if (_plane_1.gameObject.activeInHierarchy)
         {
-            if (_plane_1.transform.position.x > _plane1PositionX && _plane_1.GetComponent<PlayerController>().enabled != true)
+            if (_plane_1.transform.position.x > _plane1PositionX && _plane_1.GetComponent<Rigidbody2D>().gravityScale > 0)
             {
                 Vector3 newPos = Vector3.Lerp(transform.position, _plane_1.position + _offset1, 1f);
                 transform.position = new Vector3(newPos.x, 0, newPos.z);

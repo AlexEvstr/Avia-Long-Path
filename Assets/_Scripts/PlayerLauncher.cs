@@ -32,7 +32,7 @@ public class PlayerLauncher : MonoBehaviour
     {
         gameObject.GetComponent<Rigidbody2D>().AddRelativeForce(_circles.transform.right * _force, ForceMode2D.Impulse);
         _circles.SetActive(false);
-        gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
+        gameObject.GetComponent<Rigidbody2D>().gravityScale = 1f;
         _launch.SetActive(false);
         _pauseButton.SetActive(true);
     }
