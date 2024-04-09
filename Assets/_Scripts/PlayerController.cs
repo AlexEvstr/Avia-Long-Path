@@ -14,9 +14,13 @@ public class PlayerController : MonoBehaviour
     public GameObject trajectoryCircle;
     private GameObject[] trajectoryCircles;
     public int numberOfCircles;
+    [SerializeField] private GameObject _pauseButton;
+
 
     private void Start()
     {
+        Time.timeScale = 1;
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
         _rigidbody = GetComponent<Rigidbody2D>();
         trajectoryCircles = new GameObject[numberOfCircles];
     }
@@ -49,7 +53,9 @@ public class PlayerController : MonoBehaviour
             for (int i = 0; i < numberOfCircles; i++)
             {
                 Destroy(trajectoryCircles[i]);
+                gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
                 gameObject.GetComponent<PlayerController>().enabled = false;
+                _pauseButton.SetActive(true);
             }
         }
     }

@@ -4,24 +4,40 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] private Transform _plane;
+    [SerializeField] private Transform _plane_1;
+    [SerializeField] private Transform _plane_2;
 
-    private Vector3 _offset;
-    private float _planePositionX;
+    private Vector3 _offset1;
+    private Vector3 _offset2;
+    private float _plane1PositionX;
+    private float _plane2PositionX;
 
     private void Start()
     {
-        _planePositionX = _plane.transform.position.x;
-        _offset = transform.position - _plane.position;
+        _plane1PositionX = _plane_1.transform.position.x;
+        _offset1 = transform.position - _plane_1.position;
+
+        _plane2PositionX = _plane_2.transform.position.x;
+        _offset2 = transform.position - _plane_2.position;
     }
 
     private void LateUpdate()
     {
-        if (_plane.transform.position.x > _planePositionX && _plane.GetComponent<PlayerController>().enabled != true)
+        if (_plane_1.gameObject.activeInHierarchy)
         {
-            Vector3 newPos = Vector3.Lerp(transform.position, _plane.position + _offset, 1f);
-            transform.position = new Vector3(newPos.x, 0, newPos.z);
-
+            if (_plane_1.transform.position.x > _plane1PositionX && _plane_1.GetComponent<PlayerController>().enabled != true)
+            {
+                Vector3 newPos = Vector3.Lerp(transform.position, _plane_1.position + _offset1, 1f);
+                transform.position = new Vector3(newPos.x, 0, newPos.z);
+            }
+        }
+        else if (_plane_2.gameObject.activeInHierarchy)
+        {
+            if (_plane_2.transform.position.x > _plane2PositionX && _plane_2.GetComponent<Rigidbody2D>().gravityScale > 0)
+            {
+                Vector3 newPos = Vector3.Lerp(transform.position, _plane_2.position + _offset2, 1f);
+                transform.position = new Vector3(newPos.x, 0, newPos.z);
+            }
         }
     }
 }
