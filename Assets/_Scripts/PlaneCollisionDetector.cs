@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlaneCollisionDetector : MonoBehaviour
 {
     [SerializeField] private GameObject _winPanel;
     [SerializeField] private GameObject _losePanel;
+
+    [SerializeField] private TMP_Text _completedLeveText;
+    [SerializeField] private TMP_Text _moneyEarnedText;
 
     private void Start()
     {
@@ -29,6 +33,11 @@ public class PlaneCollisionDetector : MonoBehaviour
         else if (collision.gameObject.CompareTag("Finish"))
         {
             _winPanel.SetActive(true);
+            _completedLeveText.text = $"LEVEL {GameData.Level} \n COMPLETED";
+            GameData.Money = GameData.Level * 100;
+            _moneyEarnedText.text = $"{GameData.Money} money earned";
+            PlayerPrefs.SetInt("Money", GameData.Money);
+            PlayerPrefs.SetInt("Level", GameData.Level + 1);
             Time.timeScale = 0; 
         }
     }
