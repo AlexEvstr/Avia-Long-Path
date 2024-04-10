@@ -29,6 +29,7 @@ public class PlayerLauncher : MonoBehaviour
 
     public void LaunchPlane()
     {
+        if (GameController.CanVibro) Vibration.VibrateIOS(ImpactFeedbackStyle.Heavy);
         gameObject.GetComponent<Rigidbody2D>().AddRelativeForce(_circles.transform.right * _force, ForceMode2D.Impulse);
         _circles.SetActive(false);
         gameObject.GetComponent<Rigidbody2D>().gravityScale = 1f;

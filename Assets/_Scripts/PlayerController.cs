@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
             _forceAtPlayer = _endPosition - _startPosision;
             for (int i = 0; i < numberOfCircles; i++)
             {
+                if (GameController.CanVibro) Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
                 trajectoryCircles[i].transform.position = CalculatePosition(i * 0.1f);
             }
         }

@@ -15,6 +15,7 @@ public class PlaneCollisionDetector : MonoBehaviour
     [SerializeField] private GameObject _explosion;
 
     [SerializeField] private GameObject _jump;
+    [SerializeField] private GameObject _finishEffect;
 
     private void Start()
     {
@@ -26,22 +27,39 @@ public class PlaneCollisionDetector : MonoBehaviour
         _jump.SetActive(false);
         if (collision.gameObject.CompareTag("StartPlatform"))
         {
+            if (GameController.CanVibro) Vibration.Vibrate();
             StartCoroutine(SpawnExplosionEffect());
         }
         else if (collision.gameObject.CompareTag("Platform"))
         {
+            if (GameController.CanVibro) Vibration.Vibrate();
             StartCoroutine(SpawnSmokeEffect());
         }
         else if (collision.gameObject.CompareTag("Finish"))
         {
-            _winPanel.SetActive(true);
+            StartCoroutine(FinishBEhavior());
+
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            gameObject.GetComponent<PolygonCollider2D>().enabled = false;
+
             _completedLeveText.text = $"LEVEL {GameData.Level} \n COMPLETED";
             GameData.Money = GameData.Level * 100;
             _moneyEarnedText.text = $"{GameData.Money} money earned";
             PlayerPrefs.SetInt("Money", GameData.Money);
             PlayerPrefs.SetInt("Level", GameData.Level + 1);
-            Time.timeScale = 0; 
+            
         }
+    }
+
+    private IEnumerator FinishBEhavior()
+    {
+        if (GameController.CanVibro) Vibration.VibrateIOS(NotificationFeedbackStyle.Success);
+        GameObject finishEffect = Instantiate(_finishEffect);
+        finishEffect.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        yield return new WaitForSeconds(2);
+        Destroy(finishEffect);
+        _winPanel.SetActive(true);
+        Time.timeScale = 0;
     }
 
     private void ShowLosePanel()
@@ -52,6 +70,7 @@ public class PlaneCollisionDetector : MonoBehaviour
 
     private IEnumerator SpawnSmokeEffect()
     {
+        if (GameController.CanVibro) Vibration.VibrateIOS(ImpactFeedbackStyle.Soft);
         GameObject smoke = Instantiate(_smoke, transform);
         smoke.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.y);
         Destroy(smoke, 1.25f);
@@ -61,6 +80,7 @@ public class PlaneCollisionDetector : MonoBehaviour
 
     private IEnumerator SpawnExplosionEffect()
     {
+        if (GameController.CanVibro) Vibration.VibrateIOS(ImpactFeedbackStyle.Heavy);
         GameObject explosion = Instantiate(_explosion, transform);
         explosion.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         gameObject.GetComponent<SpriteRenderer>().enabled = false;

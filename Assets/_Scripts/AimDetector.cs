@@ -48,6 +48,7 @@ public class AimDetector : MonoBehaviour
     {
         if (_slider.activeInHierarchy)
         {
+            if (GameController.CanVibro) Vibration.VibrateIOS(ImpactFeedbackStyle.Rigid);
             gameObject.GetComponent<Animator>().speed = 0;
             _isStopped = true;
         }

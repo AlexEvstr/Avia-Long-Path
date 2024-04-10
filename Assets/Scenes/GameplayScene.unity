@@ -2369,6 +2369,7 @@ MonoBehaviour:
   _smoke: {fileID: 6716016339996508848, guid: 46ddd4e9d7e21466785b05bdf07be613, type: 3}
   _explosion: {fileID: 7131919466791885004, guid: 749a103ec445c481ebc212af4c740e0b, type: 3}
   _jump: {fileID: 1432126155}
+  _finishEffect: {fileID: 6489396589270472499, guid: eaf32d5a549e64a88a5f6f7923bb66f5, type: 3}
 --- !u!1 &838410233
 GameObject:
   m_ObjectHideFlags: 0
@@ -3176,6 +3177,7 @@ MonoBehaviour:
   _smoke: {fileID: 6716016339996508848, guid: 46ddd4e9d7e21466785b05bdf07be613, type: 3}
   _explosion: {fileID: 7131919466791885004, guid: 749a103ec445c481ebc212af4c740e0b, type: 3}
   _jump: {fileID: 1432126155}
+  _finishEffect: {fileID: 6489396589270472499, guid: eaf32d5a549e64a88a5f6f7923bb66f5, type: 3}
 --- !u!1001 &1039482304
 PrefabInstance:
   m_ObjectHideFlags: 0
