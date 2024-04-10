@@ -11,6 +11,11 @@ public class PlaneCollisionDetector : MonoBehaviour
     [SerializeField] private TMP_Text _completedLeveText;
     [SerializeField] private TMP_Text _moneyEarnedText;
 
+    [SerializeField] private GameObject _smoke;
+    [SerializeField] private GameObject _explosion;
+
+    [SerializeField] private GameObject _jump;
+
     private void Start()
     {
         Time.timeScale = 1;
@@ -18,17 +23,14 @@ public class PlaneCollisionDetector : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        _jump.SetActive(false);
         if (collision.gameObject.CompareTag("StartPlatform"))
         {
-            Debug.Log("start");
-            _losePanel.SetActive(true);
-            Time.timeScale = 0;
+            StartCoroutine(SpawnExplosionEffect());
         }
         else if (collision.gameObject.CompareTag("Platform"))
         {
-            Debug.Log("platfrom");
-            _losePanel.SetActive(true);
-            Time.timeScale = 0;
+            StartCoroutine(SpawnSmokeEffect());
         }
         else if (collision.gameObject.CompareTag("Finish"))
         {
@@ -40,5 +42,30 @@ public class PlaneCollisionDetector : MonoBehaviour
             PlayerPrefs.SetInt("Level", GameData.Level + 1);
             Time.timeScale = 0; 
         }
+    }
+
+    private void ShowLosePanel()
+    {
+        _losePanel.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    private IEnumerator SpawnSmokeEffect()
+    {
+        GameObject smoke = Instantiate(_smoke, transform);
+        smoke.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.y);
+        Destroy(smoke, 1.25f);
+        yield return new WaitForSeconds(0.75f);
+        StartCoroutine(SpawnExplosionEffect());
+    }
+
+    private IEnumerator SpawnExplosionEffect()
+    {
+        GameObject explosion = Instantiate(_explosion, transform);
+        explosion.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        Destroy(explosion, 0.5f);
+        yield return new WaitForSeconds(0.5f);
+        ShowLosePanel();
     }
 }

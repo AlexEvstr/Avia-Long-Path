@@ -9,6 +9,8 @@ public class AimDetector : MonoBehaviour
 
     [SerializeField] private GameObject _plane_1;
     [SerializeField] private GameObject _plane_2;
+
+    [SerializeField] private GameObject _splash;
     
     private Rigidbody2D _rigidbody;
     private float _force;
@@ -31,6 +33,10 @@ public class AimDetector : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Target") && _isStopped == true)
         {
+            GameObject splash = Instantiate(_splash);
+            splash.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            splash.transform.SetParent(transform);
+            Destroy(splash, 0.5f);
             _rigidbody.AddForce(Vector2.up * _force, ForceMode2D.Impulse);
             _isStopped = false;
             gameObject.GetComponent<Animator>().speed = 1;
