@@ -11,17 +11,19 @@ public class AimDetector : MonoBehaviour
     [SerializeField] private GameObject _plane_2;
     
     private Rigidbody2D _rigidbody;
-    private float _force = 9f;
+    private float _force;
 
     private void Start()
     {
         if (_plane_1.activeInHierarchy)
         {
             _rigidbody = _plane_1.GetComponent<Rigidbody2D>();
+            _force = 9f;
         }
         else if (_plane_2.activeInHierarchy)
         {
             _rigidbody = _plane_2.GetComponent<Rigidbody2D>();
+            _force = 9f;
         }
     }
 

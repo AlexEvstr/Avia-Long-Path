@@ -14,7 +14,7 @@ public class AimSpawner : MonoBehaviour
 
     private IEnumerator SpawnAim()
     {
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(1f);
         _slider.SetActive(true);
     }
 }

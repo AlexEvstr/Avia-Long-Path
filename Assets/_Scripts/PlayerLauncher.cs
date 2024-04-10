@@ -7,7 +7,6 @@ public class PlayerLauncher : MonoBehaviour
     [SerializeField] private GameObject _circles;
     [SerializeField] private GameObject _launch;
     [SerializeField] private GameObject _pauseButton;
-    [SerializeField] private GameObject _Jump;
 
     private float _pitch;
     private float _force = 27.0f;
