@@ -30,6 +30,13 @@ public class GameData : MonoBehaviour
             _levelText.text = null;
             _moneyText.text = null;
         }
+        if (Level > BestLevel)
+        {
+            BestLevel = Level;
+            PlayerPrefs.SetInt("BestLevel", BestLevel);
+        }
     }
+
+
 
 }
