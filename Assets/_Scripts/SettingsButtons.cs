@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SettingsButtons : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class SettingsButtons : MonoBehaviour
     [SerializeField] private GameObject _sound_off;
     [SerializeField] private GameObject _vibro_on;
     [SerializeField] private GameObject _vibro_off;
+    [SerializeField] private Image _firstButton;
+    [SerializeField] private Image _SecondButton;
 
     public static bool _canVibro;
 
@@ -21,7 +24,12 @@ public class SettingsButtons : MonoBehaviour
         if (sound == 1) SoundOn();
         else SoundOff();
 
-        
+        int variant = PlayerPrefs.GetInt("variant", 1);
+        if (variant == 1) FirstVariantOfControll();
+        else SecondVariantOfCOntrol();
+
+
+
     }
 
     public void SoundOff()
@@ -57,11 +65,15 @@ public class SettingsButtons : MonoBehaviour
 
     public void FirstVariantOfControll()
     {
-
+        PlayerPrefs.SetInt("variant", 1);
+        _firstButton.color = Color.green;
+        _SecondButton.color = Color.grey;
     }
 
     public void SecondVariantOfCOntrol()
     {
-
+        PlayerPrefs.SetInt("variant", 2);
+        _SecondButton.color = Color.green;
+        _firstButton.color = Color.grey;
     }
 }

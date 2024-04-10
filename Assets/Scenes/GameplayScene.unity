@@ -1856,6 +1856,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pausePanel: {fileID: 530618731}
+  _firstVariant: {fileID: 1036056903}
+  _SecondVariant: {fileID: 1436781813}
 --- !u!114 &723388616
 MonoBehaviour:
   m_ObjectHideFlags: 0

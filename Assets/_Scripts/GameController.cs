@@ -6,9 +6,23 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     [SerializeField] private GameObject _pausePanel;
-    private void Start()
-    {
 
+    [SerializeField] private GameObject _firstVariant;
+    [SerializeField] private GameObject _SecondVariant;
+
+    private void OnEnable()
+    {
+        int variant = PlayerPrefs.GetInt("variant", 1);
+        if (variant == 1)
+        {
+            _SecondVariant.SetActive(false);
+            _firstVariant.SetActive(true);
+        }
+        else
+        {
+            _firstVariant.SetActive(false);
+            _SecondVariant.SetActive(true);
+        }
     }
 
     public void PauseButton()

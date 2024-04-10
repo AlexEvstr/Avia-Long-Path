@@ -5644,7 +5644,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &666221943
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7599,7 +7599,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 897584652}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1414792462}
+        m_TargetAssemblyTypeName: SettingsButtons, Assembly-CSharp
+        m_MethodName: FirstVariantOfControll
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &914467373
 GameObject:
   m_ObjectHideFlags: 0
@@ -10689,6 +10701,8 @@ MonoBehaviour:
   _sound_off: {fileID: 159594143}
   _vibro_on: {fileID: 991180546}
   _vibro_off: {fileID: 914467373}
+  _firstButton: {fileID: 897584652}
+  _SecondButton: {fileID: 2132738332}
 --- !u!1 &1450991184
 GameObject:
   m_ObjectHideFlags: 0
@@ -15671,7 +15685,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2132738332}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1414792462}
+        m_TargetAssemblyTypeName: SettingsButtons, Assembly-CSharp
+        m_MethodName: SecondVariantOfCOntrol
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2139963800
 GameObject:
   m_ObjectHideFlags: 0
