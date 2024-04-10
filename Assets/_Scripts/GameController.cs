@@ -27,4 +27,15 @@ public class GameController : MonoBehaviour
     {
         SceneManager.LoadScene("GameplayScene");
     }
+
+    public void MenuButton()
+    {
+        SceneManager.LoadScene("MenuScene");
+    }
+
+    public void NextButton()
+    {
+        SceneManager.LoadScene("GameplayScene");
+        //Level++;
+    }
 }
