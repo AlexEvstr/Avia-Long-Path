@@ -16,6 +16,7 @@ public class PlayerLauncher : MonoBehaviour
     {
         Time.timeScale = 1;
         Screen.orientation = ScreenOrientation.LandscapeLeft;
+        gameObject.AddComponent<PolygonCollider2D>();
         _pitch = transform.eulerAngles.z;
         Input.gyro.enabled = true;
         Input.gyro.updateInterval = 0.01f;

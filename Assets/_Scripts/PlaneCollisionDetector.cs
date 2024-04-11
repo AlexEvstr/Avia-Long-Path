@@ -49,10 +49,12 @@ public class PlaneCollisionDetector : MonoBehaviour
             gameObject.GetComponent<PolygonCollider2D>().enabled = false;
 
             _completedLeveText.text = $"LEVEL {GameData.Level} \n COMPLETED";
-            GameData.Money = GameData.Level * 100;
-            _moneyEarnedText.text = $"{GameData.Money} money earned";
+            int earnedMoney = GameData.Level * 100;
+            _moneyEarnedText.text = $"{earnedMoney} earned";
+            GameData.Money += earnedMoney;
             PlayerPrefs.SetInt("Money", GameData.Money);
-            PlayerPrefs.SetInt("Level", GameData.Level + 1);
+            GameData.Level++;
+            PlayerPrefs.SetInt("Level", GameData.Level);
             
         }
     }
@@ -67,7 +69,6 @@ public class PlaneCollisionDetector : MonoBehaviour
         _gameSoundsController.PlayLevelComleteSound();
         Destroy(finishEffect);
         _winPanel.SetActive(true);
-        Time.timeScale = 0;
     }
 
     private void ShowLosePanel()

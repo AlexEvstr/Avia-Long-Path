@@ -17,9 +17,8 @@ public class SettingsButtons : MonoBehaviour
     private void Start()
     {
         int canVibro = PlayerPrefs.GetInt("vibro", 1);
-        if (canVibro == 1) CanVibro = true;
-        else CanVibro = false;
-        //CanVibro = false;
+        if (canVibro == 1) VibroOn();
+        else VibroOff();
 
         float sound = PlayerPrefs.GetFloat("sounds", 1);
         if (sound == 1) SoundOn();
@@ -63,8 +62,8 @@ public class SettingsButtons : MonoBehaviour
     {
         _vibro_off.SetActive(false);
         _vibro_on.SetActive(true);
-        PlayerPrefs.SetInt("vibro", 1);
         CanVibro = true;
+        PlayerPrefs.SetInt("vibro", 1);
         if (CanVibro) Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
     }
 

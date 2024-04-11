@@ -14,12 +14,12 @@ public class MenuLevelButton : MonoBehaviour
         if (_bestLevel >= int.Parse(gameObject.name))
         {
             gameObject.GetComponent<Button>().enabled = true;
-            gameObject.GetComponent<Image>().color = Color.gray;
+            gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
         }
         else
         {
             gameObject.GetComponent<Button>().enabled = false;
-            gameObject.GetComponent<Image>().color = Color.magenta;
+            gameObject.GetComponent<Image>().color = Color.grey;
         }
     }
 

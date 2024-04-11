@@ -2,13 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEditor.Animations;
 
 public class GameData : MonoBehaviour
 {
     [SerializeField] private TMP_Text _levelText;
     [SerializeField] private TMP_Text _moneyText;
-
     [SerializeField] private GameObject _pauseBtn;
+
+    [SerializeField] private Animator _plane_1_Animator;
+    [SerializeField] private Animator _plane_2_Animator;
+    [SerializeField] private SpriteRenderer _plane_1_Sprite;
+    [SerializeField] private SpriteRenderer _plane_2_Sprite;
+
+    [SerializeField] private AnimatorController[] _planeAnimations;
+    [SerializeField] private Sprite[] _planeSprites;
+
+    [SerializeField] private GameObject _gemGameobject;
 
     public static int Level;
     public static int BestLevel;
@@ -16,11 +26,20 @@ public class GameData : MonoBehaviour
 
     private void OnEnable()
     {
+        BestLevel = PlayerPrefs.GetInt("BestLevel", 1);
+        int index = PlayerPrefs.GetInt("planeNumber", 0);
+        _plane_1_Animator.runtimeAnimatorController = _planeAnimations[index];
+        _plane_2_Animator.runtimeAnimatorController = _planeAnimations[index];
+        _plane_1_Sprite.sprite = _planeSprites[index];
+        _plane_2_Sprite.sprite = _planeSprites[index];
+
         Level = PlayerPrefs.GetInt("Level", 1);
         Money = PlayerPrefs.GetInt("Money", 0);
 
         _levelText.text = $"LEVEL: {Level}";
-        _moneyText.text = $"Money: {Money}";
+        _moneyText.text = $"{Money}";
+
+
     }
 
     private void Update()
@@ -29,6 +48,7 @@ public class GameData : MonoBehaviour
         {
             _levelText.text = null;
             _moneyText.text = null;
+            _gemGameobject.SetActive(false);
         }
         if (Level > BestLevel)
         {

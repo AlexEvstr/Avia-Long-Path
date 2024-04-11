@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     {
         Time.timeScale = 1;
         Screen.orientation = ScreenOrientation.LandscapeLeft;
+        gameObject.AddComponent<PolygonCollider2D>();
         _rigidbody = GetComponent<Rigidbody2D>();
         trajectoryCircles = new GameObject[numberOfCircles];
     }

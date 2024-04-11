@@ -18,6 +18,8 @@ public class MenuController : MonoBehaviour
     public void PlayButton()
     {
         if (SettingsButtons.CanVibro) Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
+        int bestLevel = PlayerPrefs.GetInt("BestLevel", 1);
+        PlayerPrefs.SetInt("Level", bestLevel);
         SceneManager.LoadScene("GameplayScene");
     }
 
