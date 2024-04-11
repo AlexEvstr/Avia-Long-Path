@@ -11,7 +11,8 @@ public class AimDetector : MonoBehaviour
     [SerializeField] private GameObject _plane_2;
 
     [SerializeField] private GameObject _splash;
-    
+    [SerializeField] GameSoundsController _gameSoundsController;
+
     private Rigidbody2D _rigidbody;
     private float _force;
 
@@ -33,6 +34,7 @@ public class AimDetector : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Target") && _isStopped == true)
         {
+            _gameSoundsController.PlayJumpSound();
             GameObject splash = Instantiate(_splash);
             splash.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             splash.transform.SetParent(transform);
