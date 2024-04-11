@@ -17,6 +17,8 @@ public class PlaneCollisionDetector : MonoBehaviour
     [SerializeField] private GameObject _jump;
     [SerializeField] private GameObject _finishEffect;
 
+    [SerializeField] private GameSoundsController _gameSoundsController;
+
     private void Start()
     {
         Time.timeScale = 1;
@@ -24,14 +26,18 @@ public class PlaneCollisionDetector : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        _gameSoundsController.StopAnySound();
         _jump.SetActive(false);
         if (collision.gameObject.CompareTag("StartPlatform"))
         {
+            _gameSoundsController.PlayDestroySound();
             if (GameController.CanVibro) Vibration.Vibrate();
             StartCoroutine(SpawnExplosionEffect());
         }
         else if (collision.gameObject.CompareTag("Platform"))
         {
+            _gameSoundsController.PlayFallSound();
+
             if (GameController.CanVibro) Vibration.Vibrate();
             StartCoroutine(SpawnSmokeEffect());
         }
@@ -53,10 +59,12 @@ public class PlaneCollisionDetector : MonoBehaviour
 
     private IEnumerator FinishBEhavior()
     {
+        _gameSoundsController.PlayWinSound();
         if (GameController.CanVibro) Vibration.VibrateIOS(NotificationFeedbackStyle.Success);
         GameObject finishEffect = Instantiate(_finishEffect);
         finishEffect.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         yield return new WaitForSeconds(2);
+        _gameSoundsController.PlayLevelComleteSound();
         Destroy(finishEffect);
         _winPanel.SetActive(true);
         Time.timeScale = 0;
@@ -75,6 +83,7 @@ public class PlaneCollisionDetector : MonoBehaviour
         smoke.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.y);
         Destroy(smoke, 1.25f);
         yield return new WaitForSeconds(0.75f);
+        _gameSoundsController.PlayDestroySound();
         StartCoroutine(SpawnExplosionEffect());
     }
 

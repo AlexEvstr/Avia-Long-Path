@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private GameObject[] trajectoryCircles;
     public int numberOfCircles;
     [SerializeField] private GameObject _pauseButton;
+    [SerializeField] private GameSoundsController _gameSoundsController;
 
 
     private void Start()
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            _gameSoundsController.PlayTetivaSound();
             _startPosision = gameObject.transform.position;
             for (int i = 0; i < numberOfCircles; i++)
             {
@@ -49,6 +51,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0))
         {
+            _gameSoundsController.PlayLaunchSound();
             _rigidbody.gravityScale = 1;
             _rigidbody.velocity = new Vector2(-_forceAtPlayer.x * Force, -_forceAtPlayer.y * Force);
             for (int i = 0; i < numberOfCircles; i++)
