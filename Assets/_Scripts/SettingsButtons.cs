@@ -19,7 +19,7 @@ public class SettingsButtons : MonoBehaviour
         int canVibro = PlayerPrefs.GetInt("vibro", 1);
         if (canVibro == 1) VibroOn();
         else VibroOff();
-
+        //CanVibro = false;
         float sound = PlayerPrefs.GetFloat("sounds", 1);
         if (sound == 1) SoundOn();
         else SoundOff();

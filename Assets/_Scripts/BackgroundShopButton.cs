@@ -63,9 +63,18 @@ public class BackgroundShopButton : MonoBehaviour
 
     private void CheckState()
     {
-        if      (gameObject.name == "0") if (PlayerPrefs.GetString("background_0", "") != "") MakeBought();
-        else if (gameObject.name == "1") if (PlayerPrefs.GetString("background_1", "") != "") MakeBought();
-        else if (gameObject.name == "2") if (PlayerPrefs.GetString("background_2", "") != "") MakeBought();
+        if      (gameObject.name == "0")
+        {
+            if (PlayerPrefs.GetString("background_0", "") != "") MakeBought();
+        }
+        else if (gameObject.name == "1")
+        {
+            if (PlayerPrefs.GetString("background_1", "") != "") MakeBought();
+        }
+        else if (gameObject.name == "2")
+        {
+            if (PlayerPrefs.GetString("background_2", "") != "") MakeBought();
+        }
     }
 
     private void MakeBought()

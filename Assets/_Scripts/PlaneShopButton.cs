@@ -63,10 +63,27 @@ public class PlaneShopButton : MonoBehaviour
 
     private void CheckState()
     {
-        if      (gameObject.name == "0") if (PlayerPrefs.GetString("plane_0", "") != "") MakeBought();
-        else if (gameObject.name == "1") if (PlayerPrefs.GetString("plane_1", "") != "") MakeBought();
-        else if (gameObject.name == "2") if (PlayerPrefs.GetString("plane_2", "") != "") MakeBought();
-        else if (gameObject.name == "3") if (PlayerPrefs.GetString("plane_3", "") != "") MakeBought();
+        if      (gameObject.name == "0")
+        {
+            if (PlayerPrefs.GetString("plane_0", "") != "") MakeBought();
+        }
+
+            
+        else if (gameObject.name == "1")
+        {
+            if (PlayerPrefs.GetString("plane_1", "") != "") MakeBought();
+        }
+                
+        else if (gameObject.name == "2")
+        {
+            if (PlayerPrefs.GetString("plane_2", "") != "") MakeBought();
+        }
+                    
+        else if (gameObject.name == "3")
+        {
+            if (PlayerPrefs.GetString("plane_3", "") != "") MakeBought();
+        }
+                        
     }
 
     private void MakeBought()
