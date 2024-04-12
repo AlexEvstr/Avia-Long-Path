@@ -18,4 +18,9 @@ public class MenuSoundsController : MonoBehaviour
     {
         _audioSource.PlayOneShot(_clickSound);
     }
+
+    public void PlaySkinBuySound()
+    {
+        _audioSource.PlayOneShot(_skinBuySound);
+    }
 }

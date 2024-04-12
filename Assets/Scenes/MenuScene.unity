@@ -1828,6 +1828,7 @@ MonoBehaviour:
   _totalCost: 10000
   _cost: {fileID: 1943293197}
   _choosen: {fileID: 1917558185}
+  _menuSoundsController: {fileID: 1414792465}
 --- !u!1 &120883180
 GameObject:
   m_ObjectHideFlags: 0
@@ -9058,6 +9059,7 @@ MonoBehaviour:
   _totalCost: 50000
   _cost: {fileID: 672970406}
   _choosen: {fileID: 1611420471}
+  _menuSoundsController: {fileID: 1414792465}
 --- !u!1 &688750060
 GameObject:
   m_ObjectHideFlags: 0
@@ -9976,6 +9978,7 @@ MonoBehaviour:
   _totalCost: 15000
   _cost: {fileID: 548694191}
   _choosen: {fileID: 2004951003}
+  _menuSoundsController: {fileID: 1414792465}
 --- !u!1 &801859317
 GameObject:
   m_ObjectHideFlags: 0
@@ -15876,6 +15879,7 @@ MonoBehaviour:
   _totalCost: 75000
   _cost: {fileID: 660461951}
   _choosen: {fileID: 191294953}
+  _menuSoundsController: {fileID: 1414792465}
 --- !u!1 &1355338060
 GameObject:
   m_ObjectHideFlags: 0
@@ -17195,6 +17199,7 @@ MonoBehaviour:
   _totalCost: 5000
   _cost: {fileID: 1097553971}
   _choosen: {fileID: 1784454206}
+  _menuSoundsController: {fileID: 1414792465}
 --- !u!1 &1450991184
 GameObject:
   m_ObjectHideFlags: 0
@@ -20111,6 +20116,7 @@ MonoBehaviour:
   _totalCost: 0
   _cost: {fileID: 1952305250}
   _choosen: {fileID: 460240942}
+  _menuSoundsController: {fileID: 1414792465}
 --- !u!1 &1651015106
 GameObject:
   m_ObjectHideFlags: 0
@@ -23999,6 +24005,7 @@ MonoBehaviour:
   _totalCost: 0
   _cost: {fileID: 47566592}
   _choosen: {fileID: 167402611}
+  _menuSoundsController: {fileID: 1414792465}
 --- !u!1 &1934095507
 GameObject:
   m_ObjectHideFlags: 0

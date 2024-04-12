@@ -9,6 +9,7 @@ public class PlaneShopButton : MonoBehaviour
     [SerializeField] private int _totalCost;
     [SerializeField] private GameObject _cost;
     [SerializeField] private GameObject _choosen;
+    [SerializeField] private MenuSoundsController _menuSoundsController;
 
     private void Start()
     {
@@ -23,6 +24,11 @@ public class PlaneShopButton : MonoBehaviour
         {
             SkinsPanel.Money -= _totalCost;
             SaveStatus();
+            _menuSoundsController.PlaySkinBuySound();
+        }
+        else
+        {
+            _menuSoundsController.PlayClickSound();
         }
 
         PlayerPrefs.SetString("Plane", gameObject.name);

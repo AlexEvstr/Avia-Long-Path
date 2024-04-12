@@ -10,6 +10,7 @@ public class BackgroundShopButton : MonoBehaviour
 
     [SerializeField] private GameObject _cost;
     [SerializeField] private GameObject _choosen;
+    [SerializeField] private MenuSoundsController _menuSoundsController;
 
     private void Start()
     {
@@ -24,6 +25,11 @@ public class BackgroundShopButton : MonoBehaviour
         {
             SkinsPanel.Money -= _totalCost;
             SaveStatus();
+            _menuSoundsController.PlaySkinBuySound();
+        }
+        else
+        {
+            _menuSoundsController.PlayClickSound();
         }
 
         PlayerPrefs.SetString("Background", gameObject.name);
