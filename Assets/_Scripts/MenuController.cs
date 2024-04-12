@@ -9,6 +9,19 @@ public class MenuController : MonoBehaviour
     [SerializeField] private GameObject _settingsPanel;
     [SerializeField] private GameObject _levelsPanel;
 
+    [SerializeField] private GameObject _onBoard_1;
+    [SerializeField] private GameObject _onBoard_2;
+    [SerializeField] private GameObject _onBoard_3;
+
+    private void OnEnable()
+    {
+        string firstEnter = PlayerPrefs.GetString("FirstEnter", "");
+        if (firstEnter == "")
+        {
+            _onBoard_1.SetActive(true);
+        }
+    }
+
     private void Start()
     {
         Vibration.Init();
@@ -63,6 +76,24 @@ public class MenuController : MonoBehaviour
     {
         if (SettingsButtons.CanVibro) Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
         Application.Quit();
+    }
+
+    public void GoTo2Board()
+    {
+        _onBoard_1.SetActive(false);
+        _onBoard_2.SetActive(true);
+    }
+
+    public void GoTo3Board()
+    {
+        _onBoard_2.SetActive(false);
+        _onBoard_3.SetActive(true);
+    }
+
+    public void GoToGame()
+    {
+        _onBoard_3.SetActive(false);
+        PlayerPrefs.SetString("FirstEnter", "nope");
     }
 
 }
