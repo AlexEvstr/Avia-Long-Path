@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEditor.Animations;
+using UnityEngine.UIElements;
 
 public class GameData : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class GameData : MonoBehaviour
 
     [SerializeField] private GameObject _gemGameobject;
 
+    [SerializeField] private GameObject[] _backgrounds;
+
     public static int Level;
     public static int BestLevel;
     public static int Money;
@@ -27,11 +30,19 @@ public class GameData : MonoBehaviour
     private void OnEnable()
     {
         BestLevel = PlayerPrefs.GetInt("BestLevel", 1);
-        int index = PlayerPrefs.GetInt("planeNumber", 0);
+        int index = int.Parse(PlayerPrefs.GetString("Plane", "0"));
         _plane_1_Animator.runtimeAnimatorController = _planeAnimations[index];
         _plane_2_Animator.runtimeAnimatorController = _planeAnimations[index];
         _plane_1_Sprite.sprite = _planeSprites[index];
         _plane_2_Sprite.sprite = _planeSprites[index];
+
+        for (int i = 0; i < _backgrounds.Length; i++)
+        {
+            if (int.Parse(PlayerPrefs.GetString("Background", "0")) == i)
+                _backgrounds[i].SetActive(true);
+            else
+                _backgrounds[i].SetActive(false);
+        }
 
         Level = PlayerPrefs.GetInt("Level", 1);
         Money = PlayerPrefs.GetInt("Money", 0);

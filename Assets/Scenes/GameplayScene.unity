@@ -3197,6 +3197,10 @@ MonoBehaviour:
   - {fileID: -1431846208, guid: de7fde16b06f1451698feec167ebbd05, type: 3}
   - {fileID: 422597716, guid: 6b637f9fdad164452bac71bef23ae598, type: 3}
   _gemGameobject: {fileID: 875503725}
+  _backgrounds:
+  - {fileID: 1892790117}
+  - {fileID: 401229359}
+  - {fileID: 73761988}
 --- !u!114 &723388617
 MonoBehaviour:
   m_ObjectHideFlags: 0
