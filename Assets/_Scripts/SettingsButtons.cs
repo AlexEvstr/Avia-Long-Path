@@ -73,7 +73,7 @@ public class SettingsButtons : MonoBehaviour
         if (CanVibro) Vibration.VibrateIOS(ImpactFeedbackStyle.Medium);
         PlayerPrefs.SetInt("variant", 1);
         _firstButton.color = Color.green;
-        _SecondButton.color = Color.grey;
+        _SecondButton.color = new Color(1, 1, 1, 1);
     }
 
     public void SecondVariantOfCOntrol()
@@ -81,6 +81,6 @@ public class SettingsButtons : MonoBehaviour
         if (CanVibro) Vibration.VibrateIOS(ImpactFeedbackStyle.Medium);
         PlayerPrefs.SetInt("variant", 2);
         _SecondButton.color = Color.green;
-        _firstButton.color = Color.grey;
+        _firstButton.color = new Color(1, 1, 1, 1);
     }
 }
