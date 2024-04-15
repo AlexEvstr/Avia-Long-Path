@@ -24,6 +24,7 @@ public class BackgroundShopButton : MonoBehaviour
         if (!_choosen.activeInHierarchy)
         {
             SkinsPanel.Money -= _totalCost;
+            PlayerPrefs.SetInt("Money", SkinsPanel.Money);
             SaveStatus();
             _menuSoundsController.PlaySkinBuySound();
         }

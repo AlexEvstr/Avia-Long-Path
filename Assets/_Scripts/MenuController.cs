@@ -10,11 +10,15 @@ public class MenuController : MonoBehaviour
     [SerializeField] private GameObject _levelsPanel;
 
     [SerializeField] private GameObject _onBoard_1;
+    [SerializeField] private GameObject _onBoard_extra;
     [SerializeField] private GameObject _onBoard_2;
     [SerializeField] private GameObject _onBoard_3;
 
+    [SerializeField] private GameObject _tutorial;
+
     private void OnEnable()
     {
+        Time.timeScale = 1;
         string firstEnter = PlayerPrefs.GetString("FirstEnter", "");
         if (firstEnter == "")
         {
@@ -78,9 +82,15 @@ public class MenuController : MonoBehaviour
         Application.Quit();
     }
 
-    public void GoTo2Board()
+    public void GoToExtraBoard()
     {
         _onBoard_1.SetActive(false);
+        _onBoard_extra.SetActive(true);
+    }
+
+    public void GoTo2Board()
+    {
+        _onBoard_extra.SetActive(false);
         _onBoard_2.SetActive(true);
     }
 
@@ -94,6 +104,16 @@ public class MenuController : MonoBehaviour
     {
         _onBoard_3.SetActive(false);
         PlayerPrefs.SetString("FirstEnter", "nope");
+    }
+
+    public void OpenTutorial()
+    {
+        _tutorial.SetActive(true);
+    }
+
+    public void CloseTutorial()
+    {
+        _tutorial.SetActive(false);
     }
 
 }

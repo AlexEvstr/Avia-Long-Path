@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEditor.Animations;
-using UnityEngine.UIElements;
 
 public class GameData : MonoBehaviour
 {
@@ -16,7 +14,7 @@ public class GameData : MonoBehaviour
     [SerializeField] private SpriteRenderer _plane_1_Sprite;
     [SerializeField] private SpriteRenderer _plane_2_Sprite;
 
-    [SerializeField] private AnimatorController[] _planeAnimations;
+    [SerializeField] private RuntimeAnimatorController[] _planeAnimations;
     [SerializeField] private Sprite[] _planeSprites;
 
     [SerializeField] private GameObject _gemGameobject;

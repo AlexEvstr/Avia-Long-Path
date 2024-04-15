@@ -19,6 +19,8 @@ public class PlaneCollisionDetector : MonoBehaviour
 
     [SerializeField] private GameSoundsController _gameSoundsController;
 
+    [SerializeField] private GameObject _pauseBTN;
+
     private void Start()
     {
         Time.timeScale = 1;
@@ -26,6 +28,7 @@ public class PlaneCollisionDetector : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        _pauseBTN.SetActive(false);
         _gameSoundsController.StopAnySound();
         _jump.SetActive(false);
         if (collision.gameObject.CompareTag("StartPlatform"))
